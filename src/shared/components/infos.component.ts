@@ -3,6 +3,7 @@ import { CounterService } from '../services/counter.service';
 import { TOKEN } from '../services/token.service';
 
 @Component({
+  standalone: true,
   selector: 'tc-infos',
   template: `
     <div>Counter : {{ counterService.value }}</div>

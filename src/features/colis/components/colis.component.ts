@@ -1,8 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { TOKEN } from '../../../shared/services/token.service';
 import { ColisService } from '../services/colis.service';
 import { Colis } from '../types/colis';
-import { CounterService } from '../../../shared/services/counter.service';
 
 @Component({
   selector: 'tc-colis',

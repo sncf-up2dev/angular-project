@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ColisComponent } from './components/colis.component';
-import { TOKEN } from '../../shared/services/token.service';
-import { SharedModule } from '../../shared/shared.module';
 import { ColisService } from './services/colis.service';
 import { ColisDetailsComponent } from './components/colis-details.component';
+import { InfosComponent } from '../../shared/components/infos.component';
+import { SelectorComponent } from '../../shared/components/selector.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +13,8 @@ import { ColisDetailsComponent } from './components/colis-details.component';
   ],
   imports: [
     CommonModule,
-    SharedModule,
+    InfosComponent,
+    SelectorComponent
   ],
   exports: [
     ColisComponent,
