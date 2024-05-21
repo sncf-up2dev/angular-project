@@ -42,5 +42,8 @@ export class ColisService {
     }
   ]
 
+  getColisById(id: string) {
+    return this.colisList.find(colis => colis.id === id)
+  }
 
 }

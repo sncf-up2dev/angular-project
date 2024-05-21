@@ -1,7 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { environment } from '../../environments/environment';
-
-export type View = 'COLIS' | 'LIVRAISONS'
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tc-root',
@@ -14,23 +13,30 @@ export type View = 'COLIS' | 'LIVRAISONS'
     </div>
 
     <div class="button-select">
-      <button (click)="currentView = 'COLIS'">Gestion des colis</button>
-      <button (click)="currentView = 'LIVRAISONS'">Livraisons assignées</button>
+      <button routerLink="/colis" routerLinkActive="selected-item">Gestion des colis</button>
+      <button routerLink="/livraisons" routerLinkActive="selected-item">Livraisons assignées</button>
     </div>
 
-    <tc-colis *ngIf="currentView === 'COLIS'" />
-    <tc-livraisons *ngIf="currentView === 'LIVRAISONS'" />
+    <router-outlet></router-outlet>
   `,
   styles: `
     button {
       margin-right: 5px;
       margin-top: 5px;
-  }`
+    }
+
+    .selected-item {
+      color: red;
+    }`
 })
 export class AppComponent {
 
   production = environment.production
 
-  currentView?: View = undefined
+  router = inject(Router)
+
+  navigateToColis() {
+    this.router.navigate(['/colis'])
+  }
 
 }

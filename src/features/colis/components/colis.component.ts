@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ColisService } from '../services/colis.service';
 import { Colis } from '../types/colis';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tc-colis',
@@ -9,10 +10,10 @@ import { Colis } from '../types/colis';
 
     <tc-selector key="id" 
       [items]="colisService.colisList"
-      (itemSelected)="selectedColis = selectedColis === $event ? undefined : $event" 
+      (itemSelected)="navigateToColis($event)" 
     />
 
-    <tc-colis-details [selectedColis]="selectedColis" />
+    <router-outlet></router-outlet>
 
     <tc-infos />
 
@@ -35,7 +36,15 @@ export class ColisComponent {
   Object = Object
 
   colisService = inject(ColisService)
+  router = inject(Router)
 
   selectedColis?: Colis = undefined
+
+  navigateToColis(colis: Colis | undefined) {
+    if (colis)
+      this.router.navigate(['/colis/' + colis.id])
+    else
+      this.router.navigate(['/colis'])
+  }
 
 }

@@ -2,16 +2,18 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './components/app.component';
-import { ColisModule } from '../features/colis/colis.module';
 import { LivraisonsModule } from '../features/livraisons/livraisons.module';
+import { AppRoutingModule } from './app.routing.module';
+import { NotFoundComponent } from './components/not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
-    ColisModule,
+    AppRoutingModule,
     LivraisonsModule,
   ],
   providers: [],
